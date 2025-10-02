@@ -38,7 +38,7 @@ export class FanAccessory extends BaseAccessory {
     // Initialize fan values
     // Get max fan speed from Dreo API
     this.currState.maxSpeed =
-      accessory.context.device.controlsConf.control.find(
+      accessory.context.device.controlsConf.control?.find(
         (params) => params.type === 'Speed',
       ).items[1].text;
     // Load current state from Dreo API
@@ -86,7 +86,7 @@ export class FanAccessory extends BaseAccessory {
 
     // Check whether fan supports oscillation
     // Some fans use different commands to toggle oscillation, determine which one should be used
-    const swing = accessory.context.device.controlsConf.control.find(
+    const swing = accessory.context.device.controlsConf.control?.find(
       (params) => params.type === 'Oscillation',
     );
     if (swing !== undefined) {
