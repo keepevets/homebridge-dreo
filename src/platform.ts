@@ -109,7 +109,7 @@ export class DreoPlatform implements DynamicPlatformPlugin {
     // Loop over the discovered devices and register each one if it has not already been registered
     for (const device of dreoDevices) {
       // Print device info:
-      this.log.debug('Control config: ', JSON.stringify(device.controlsConf, null, 2));
+      this.log.info('Control config: ', JSON.stringify(device.controlsConf, null, 2));
 
       // Generate a unique id for the accessory this should be generated from
       // something globally unique, but constant, for example, the device serial
@@ -141,7 +141,7 @@ export class DreoPlatform implements DynamicPlatformPlugin {
         this.log.error('error: Failed to retrieve device state');
         return;
       }
-      this.log.debug('Accessory state:', state);
+      this.log.info('Accessory state:', state);
 
       // Create the accessory handler for new/restored accessory
       // This is imported from `platformAccessory.ts`
