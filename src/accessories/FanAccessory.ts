@@ -40,7 +40,7 @@ export class FanAccessory extends BaseAccessory {
     this.currState.maxSpeed =
       accessory.context.device.controlsConf.control?.find(
         (params) => params.type === 'Speed',
-      ).items[1].text;
+      ).items[1].text ?? 100;
     // Load current state from Dreo API
     this.currState.speed =
       (state.windlevel.state * 100) / this.currState.maxSpeed;
@@ -91,6 +91,9 @@ export class FanAccessory extends BaseAccessory {
     );
     if (swing !== undefined) {
       this.currState.swingCMD = swing.cmd;
+    }
+    if (state.shakehorizon !== undefined && this.currState.swingCMD === 'none') {
+this.currState.swingCMD = 'shakehorizon';
     }
 
     if (this.currState.swingCMD !== 'none') {
