@@ -87,7 +87,7 @@ export class FanAccessory extends BaseAccessory {
     // Check whether fan supports oscillation
     // Some fans use different commands to toggle oscillation, determine which one should be used
     const swing = accessory.context.device.controlsConf.control?.find(
-      (params) => params.type === 'Oscillation',
+      (params) => params.type === 'Oscillation' || params.type === 'Oscillate',
     );
     if (swing !== undefined) {
       this.currState.swingCMD = swing.cmd;
